@@ -7,7 +7,7 @@ import javax.enterprise.context.Dependent;
 /**
  * A class to test that settings can be injected.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 @Dependent
 public class ExampleClass

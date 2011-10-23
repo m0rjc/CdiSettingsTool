@@ -5,9 +5,9 @@ import uk.me.m0rjc.cdiSettingsTool.ConfigurationValue;
 
 /**
  * Support class for implementing {@link ConfigurationValue}.
- * Allows an implementor to only provide {@link #getStringValue()}.
+ * Allows an implementor to implement the interface by only providing {@link #getStringValue()}.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public abstract class AbstractConfigurationValue implements ConfigurationValue
 {

@@ -16,7 +16,7 @@ import junit.framework.Assert;
 /**
  * A CDI configuration provider bean.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class PropertiesConfigurationProviderForTesting extends PropertiesConfigurationProvider
 {

@@ -3,7 +3,7 @@ package uk.me.m0rjc.cdiSettingsTool;
 /**
  * Applications implement this interface to provide configuration.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public interface ConfigurationProvider
 {

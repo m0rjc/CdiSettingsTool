@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 /**
  * Implement {@link Injector} by setting a Field directly.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  *
  * @param <I> Instance type of the target bean.
  * @param <T> Instance type of the Property.

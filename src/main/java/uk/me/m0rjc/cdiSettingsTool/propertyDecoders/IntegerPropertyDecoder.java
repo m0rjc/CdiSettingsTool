@@ -9,7 +9,7 @@ import uk.me.m0rjc.cdiSettingsTool.PropertyDecoder;
 /**
  * Decoder for Integer and int properties.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class IntegerPropertyDecoder implements PropertyDecoder<Integer>
 {

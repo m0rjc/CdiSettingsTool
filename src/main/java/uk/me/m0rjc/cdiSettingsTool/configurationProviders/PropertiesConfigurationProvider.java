@@ -10,8 +10,12 @@ import uk.me.m0rjc.cdiSettingsTool.ConfigurationValue;
  * Tool to provide configuration from a Properties File.
  * Intended for subclassing or composition in code that knows were to get the
  * Properties from.
+ * 
+ * <p>Client code may either construct this and call {@link #setProperties(Properties)},
+ * or it may subclass and override {@link #getProperties()}. The factory method {@link #createValue(String, String)}
+ * is also provided to allow a subclass to specialise the value returned.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class PropertiesConfigurationProvider implements ConfigurationProvider
 {

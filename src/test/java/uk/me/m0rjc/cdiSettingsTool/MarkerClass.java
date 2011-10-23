@@ -3,7 +3,7 @@ package uk.me.m0rjc.cdiSettingsTool;
 /**
  * The configuration provider will provide values for this class for diagnosis.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class MarkerClass
 {

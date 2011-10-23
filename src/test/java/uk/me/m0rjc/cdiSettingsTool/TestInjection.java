@@ -13,7 +13,7 @@ import org.junit.Test;
 /**
  * Test in a CDI environment using Weld-SE.
  * 
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class TestInjection
 {

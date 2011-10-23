@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 /**
  * Injection using a setter Method.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  *
  * @param <I> Instance type of the target bean.
  * @param <T> Instance type of the Property.

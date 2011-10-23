@@ -9,7 +9,7 @@ import java.util.ServiceLoader;
  *
  * PropertyDecoders are found using the {@link ServiceLoader} mechanism.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  *
  * @param <T> type of property resulting.
  */

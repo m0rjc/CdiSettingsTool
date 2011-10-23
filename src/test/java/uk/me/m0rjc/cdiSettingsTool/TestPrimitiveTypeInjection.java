@@ -14,7 +14,7 @@ import org.junit.Test;
  * Test the behaviour of primitive types in Java.
  * Test {@link FieldInjector} and {@link MethodInjector} with these types.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class TestPrimitiveTypeInjection
 {

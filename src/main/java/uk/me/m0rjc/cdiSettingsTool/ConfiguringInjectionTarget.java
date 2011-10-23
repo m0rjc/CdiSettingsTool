@@ -11,7 +11,7 @@ import javax.enterprise.inject.spi.InjectionTarget;
 /**
  * Wrap InjectionTarget to add in configuration settings.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  *
  * @param <I> the instance type being wrapped.
  */

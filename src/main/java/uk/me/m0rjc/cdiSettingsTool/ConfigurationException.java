@@ -3,7 +3,7 @@ package uk.me.m0rjc.cdiSettingsTool;
 /**
  * Exceptions while configuring.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class ConfigurationException extends Exception
 {

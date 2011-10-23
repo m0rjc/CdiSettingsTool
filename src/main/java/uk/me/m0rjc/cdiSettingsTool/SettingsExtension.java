@@ -28,7 +28,7 @@ import javax.resource.spi.ResourceAdapter;
 /**
  * Extension to apply runtime settings to beans in CDI.
  * 
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 public class SettingsExtension implements Extension
 {

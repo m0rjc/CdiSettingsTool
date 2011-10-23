@@ -9,7 +9,7 @@ import java.util.List;
  * This provider supports multiple wrapped providers. If there are multiple then it will
  * return the first answer it gets.
  *
- * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
+ * @author "Richard Corfield &lt;m0rjc@m0rjc.me.uk&gt;"
  */
 final class LateBoundConfigurationProvider implements ConfigurationProvider
 {
