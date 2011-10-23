@@ -1,6 +1,7 @@
 package uk.me.m0rjc.cdiSettingsTool.test;
 
-import javax.resource.spi.ConfigProperty;
+import uk.me.m0rjc.cdiSettingsTool.ConfigProperty;
+
 
 /**
  * A class to test that settings can be injected.
@@ -10,6 +11,29 @@ import javax.resource.spi.ConfigProperty;
 public class TestClass
 {
     @ConfigProperty
-    private int integerSetting;
+    private int m_integerSetting;
+    
+    private String m_stringSetting;
+    
+    @ConfigProperty
+    public void setStringSetting(String value)
+    {
+        m_stringSetting = value;
+    }
+
+    public int getIntegerSetting()
+    {
+        return m_integerSetting;
+    }
+
+    public void setIntegerSetting(int integerSetting)
+    {
+        m_integerSetting = integerSetting;
+    }
+
+    public String getStringSetting()
+    {
+        return m_stringSetting;
+    }
     
 }
