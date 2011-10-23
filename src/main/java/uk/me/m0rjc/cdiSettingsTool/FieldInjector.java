@@ -28,6 +28,7 @@ class FieldInjector<I, T> implements Injector<I, T>
     {
         try
         {
+            m_field.setAccessible(true);
             m_field.set(instance, value);
         }
         catch (Exception e)

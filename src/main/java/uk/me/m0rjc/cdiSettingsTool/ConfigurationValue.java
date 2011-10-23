@@ -13,4 +13,16 @@ public interface ConfigurationValue
      * @throws ConfigurationException on error.
      */
     String getStringValue() throws ConfigurationException;
+
+    /**
+     * @return the value as a Boolean if applicable. True, False or null.
+     * @throws ConfigurationException on error or the value is not a Boolean.
+     */
+    Boolean getBooleanValue() throws ConfigurationException;
+
+    /**
+     * @return the value as an Integer if applicable. True, False or null.
+     * @throws ConfigurationException on error or the value is not Integer.
+     */
+    Integer getIntegerValue() throws ConfigurationException;
 }

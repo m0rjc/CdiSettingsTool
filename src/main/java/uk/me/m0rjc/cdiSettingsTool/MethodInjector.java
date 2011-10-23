@@ -28,6 +28,7 @@ class MethodInjector<I, T> implements Injector<I, T>
     {
         try
         {
+            m_setter.setAccessible(true);
             m_setter.invoke(instance, value);
         }
         catch (Exception e)

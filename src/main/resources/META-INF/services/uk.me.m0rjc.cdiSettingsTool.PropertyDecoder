@@ -1,0 +1,3 @@
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.StringPropertyDecoder
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.IntegerPropertyDecoder
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.BooleanPropertyDecoder

@@ -13,18 +13,18 @@ import javax.enterprise.inject.spi.InjectionTarget;
  *
  * @author "Richard Corfield <m0rjc@m0rjc.me.uk>"
  *
- * @param <X> the type being wrapped.
+ * @param <I> the instance type being wrapped.
  */
-final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
+final class ConfiguringInjectionTarget<I> implements InjectionTarget<I>
 {
     /** Wrapped injection target. */
-    private final InjectionTarget<X> m_wrapped;
+    private final InjectionTarget<I> m_wrapped;
     /** Source of configuration information. */
-    private final ConfigurationProvider m_configurationProvider;
+    private final LateBoundConfigurationProvider m_configurationProvider;
     /** Name of the class to look up in the properties provider. */
     private final String m_className;
     /** Property handlers. */
-    private final List<PropertyHandler<X, ?>> m_properties;
+    private final List<PropertyHandler<I, ?>> m_properties;
 
     /**
      * Wrap the given injection target to add configuration information from the given provider.
@@ -33,10 +33,10 @@ final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
      * @param className the class name to look up in Configuration.
      * @param properties property handlers.
      */
-    ConfiguringInjectionTarget(final InjectionTarget<X> it,
-                               final ConfigurationProvider provider,
+    ConfiguringInjectionTarget(final InjectionTarget<I> it,
+                               final LateBoundConfigurationProvider provider,
                                final String className,
-                               final List<PropertyHandler<X, ?>> properties)
+                               final List<PropertyHandler<I, ?>> properties)
     {
         m_wrapped = it;
         m_configurationProvider = provider;
@@ -45,10 +45,13 @@ final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
     }
 
     @Override
-    public void inject(final X instance, final CreationalContext<X> ctx)
+    public void inject(final I instance, final CreationalContext<I> ctx)
     {
         m_wrapped.inject(instance, ctx);
-        injectConfiguration(instance);
+        if(m_configurationProvider.hasProvider())
+        {
+            injectConfiguration(instance);
+        }
     }
 
     /**
@@ -56,11 +59,11 @@ final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
      *
      * @param instance target for injection.
      */
-    private void injectConfiguration(final X instance)
+    private void injectConfiguration(final I instance)
     {
         try
         {
-            for(PropertyHandler<X, ?> property : m_properties)
+            for(PropertyHandler<I, ?> property : m_properties)
             {
                 property.marshall(m_configurationProvider, m_className, instance);
             }
@@ -72,19 +75,19 @@ final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
     }
 
     @Override
-    public void postConstruct(final X instance)
+    public void postConstruct(final I instance)
     {
         m_wrapped.postConstruct(instance);
     }
 
     @Override
-    public void preDestroy(final X instance)
+    public void preDestroy(final I instance)
     {
         m_wrapped.dispose(instance);
     }
 
     @Override
-    public void dispose(final X instance)
+    public void dispose(final I instance)
     {
         m_wrapped.dispose(instance);
     }
@@ -96,7 +99,7 @@ final class ConfiguringInjectionTarget<X> implements InjectionTarget<X>
     }
 
     @Override
-    public X produce(final CreationalContext<X> ctx)
+    public I produce(final CreationalContext<I> ctx)
     {
         return m_wrapped.produce(ctx);
     }
