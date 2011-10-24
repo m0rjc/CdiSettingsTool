@@ -1,15 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-        <parent>
-                <groupId>org.sonatype.oss</groupId>
-                <artifactId>oss-parent</artifactId>
-                <version>7</version>
-        </parent>
 	<groupId>uk.me.m0rjc</groupId>
 	<artifactId>cdi-settings-tool</artifactId>
-	<packaging>pom</packaging>
-	<version>0.1.1</version>
+	<version>0.1</version>
 	<organization>
 		<name>This is a personal project, currently not associated with any organisation.</name>
 	</organization>
@@ -29,15 +23,11 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:git@github.com:m0rjc/CdiSettingsTool.git</connection>
-		<developerConnection>scm:git:git@github.com:m0rjc/CdiSettingsTool.git</developerConnection>
+		<connection>scm:git:git://github.com/m0rjc/CdiSettingsTool.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/m0rjc/CdiSettingsTool.git</developerConnection>
 		<url>https://github.com/m0rjc/CdiSettingsTool</url>
 	</scm>
 	<name>Configuration settings injection for CDI</name>
-
-	<modules>
-		<module>core</module>
-	</modules>
 
 	<build>
 		<plugins>
@@ -52,8 +42,31 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.0-beta-3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -95,7 +108,38 @@
 		</plugins>
 	</reporting>
 
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-core</artifactId>
+			<version>1.1.1.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.0-SP4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.resource</groupId>
+			<artifactId>connector-api</artifactId>
+			<version>1.6-alpha-1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.slf4j</groupId>
+			<artifactId>slf4j-jboss-logging</artifactId>
+			<version>1.0.3.GA</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	<url>http://github.com/m0rjc/CdiSettingsTool</url>
 	<description>Provide injection points for configuration in Java Enterprise Beans managed by CDI.</description>
-	<inceptionYear>2011</inceptionYear>
+	<inceptionYear>2011-10-23</inceptionYear>
 </project>
