@@ -1,5 +1,7 @@
 package uk.me.m0rjc.cdiSettingsTool;
 
+import java.util.Date;
+
 /**
  * A Configured value.
  * Returned by {@link ConfigurationProvider}.
@@ -21,8 +23,20 @@ public interface ConfigurationValue
     Boolean getBooleanValue() throws ConfigurationException;
 
     /**
-     * @return the value as an Integer if applicable. True, False or null.
+     * @return the value as an Integer if applicable.
      * @throws ConfigurationException on error or the value is not Integer.
      */
     Integer getIntegerValue() throws ConfigurationException;
+
+    /**
+     * @return the value as a Double if applicable.
+     * @throws ConfigurationException on error or the value is not Double or Float.
+     */
+    Double getDoubleValue()  throws ConfigurationException;
+    
+    /**
+     * @return the value as a Date if applicable.
+     * @throws ConfigurationException on error or the value is not Date.
+     */    
+    Date getDateValue() throws ConfigurationException;
 }

@@ -1,5 +1,7 @@
 package uk.me.m0rjc.cdiSettingsTool;
 
+import java.util.Date;
+
 import javax.enterprise.inject.Instance;
 
 import junit.framework.Assert;
@@ -63,6 +65,14 @@ public class TestInjection
         Assert.assertEquals("Integer setting", 12, instance.getIntegerSetting());
         Assert.assertNull("Boolean setting", instance.getBooleanSetting());
         Assert.assertEquals("Absent Setting", "Default Value", instance.getAbsentSetting());
+        Assert.assertEquals("Float setting", 3.141592f, instance.getFloatSetting());
+        Assert.assertEquals("double setting", -3.141592, instance.getDoubleSetting());
+        Assert.assertEquals("float wrapper setting", Float.valueOf(8.85418782e-12f), instance.getFloatWrapperSetting());
+        Assert.assertEquals("double wrapper setting", Double.valueOf(1.602e-19), instance.getDoubleWrapperSetting());
+     
+        // 1991-12-30 16:04:23 +0000
+        Date expectedDate = DateTools.makeDateGmt(1991,12,30,16,04,23);
+        Assert.assertEquals("Date setting", expectedDate, instance.getDateSetting());
     }
     
     /**

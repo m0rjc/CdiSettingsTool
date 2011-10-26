@@ -1,3 +1,6 @@
 uk.me.m0rjc.cdiSettingsTool.propertyDecoders.StringPropertyDecoder
 uk.me.m0rjc.cdiSettingsTool.propertyDecoders.IntegerPropertyDecoder
 uk.me.m0rjc.cdiSettingsTool.propertyDecoders.BooleanPropertyDecoder
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.FloatPropertyDecoder
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.DoublePropertyDecoder
+uk.me.m0rjc.cdiSettingsTool.propertyDecoders.DatePropertyDecoder
