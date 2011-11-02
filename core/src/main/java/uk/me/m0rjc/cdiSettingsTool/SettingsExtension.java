@@ -133,9 +133,10 @@ public class SettingsExtension implements Extension
 
         for (AnnotatedMethod<? super I> method : annotatedType.getMethods())
         {
-            if (method.isAnnotationPresent(ConfigProperty.class))
+        	ConfigProperty metadata = method.getAnnotation(ConfigProperty.class);
+            if (metadata != null)
             {
-                PropertyHandler<I, ?> handler = constructMethodHandler(method);
+                PropertyHandler<I, ?> handler = constructMethodHandler(method, metadata);
                 if (handler != null)
                 {
                     handlers.add(handler);
@@ -145,9 +146,10 @@ public class SettingsExtension implements Extension
 
         for (AnnotatedField<? super I> field : annotatedType.getFields())
         {
-            if (field.isAnnotationPresent(ConfigProperty.class))
+        	ConfigProperty metadata = field.getAnnotation(ConfigProperty.class);
+        	if (metadata != null)
             {
-                PropertyHandler<I, ?> handler = constructFieldHandler(field);
+                PropertyHandler<I, ?> handler = constructFieldHandler(field, metadata);
                 if (handler != null)
                 {
                     handlers.add(handler);
@@ -163,12 +165,13 @@ public class SettingsExtension implements Extension
      * 
      * @param field
      *            field to inject into.
+     * @param metadata
+     * 			  ConfigurationProperty metadata for the field.
      * @return the handler of null if not possible.
      * @param <I>
      *            instance type.
      */
-    private <I> PropertyHandler<I, ?> constructFieldHandler(
-            final AnnotatedField<? super I> field)
+    private <I> PropertyHandler<I, ?> constructFieldHandler(final AnnotatedField<? super I> field, ConfigProperty metadata)
     {
         Class<? super I> declaringClass = field.getDeclaringType()
                 .getJavaClass();
@@ -184,7 +187,7 @@ public class SettingsExtension implements Extension
             m_log.fine(String.format(
                     "Declared annotation property %s on class %s.", name,
                     declaringClassName));
-            return new PropertyHandler(propertyType, name, decoder,
+            return new PropertyHandler(propertyType, name, metadata, decoder,
                     new FieldInjector(javaField));
         }
 
@@ -200,12 +203,13 @@ public class SettingsExtension implements Extension
      * 
      * @param field
      *            field to inject into.
+     * @param metadata
+     * 			  ConfigurationProperty metadata for the field.
      * @return the handler of null if not possible.
      * @param <I>
      *            instance type.
      */
-    private <I> PropertyHandler<I, ?> constructMethodHandler(
-            final AnnotatedMethod<? super I> field)
+    private <I> PropertyHandler<I, ?> constructMethodHandler(final AnnotatedMethod<? super I> field, ConfigProperty metadata)
     {
         Class<? super I> declaringClass = field.getDeclaringType()
                 .getJavaClass();
@@ -230,7 +234,7 @@ public class SettingsExtension implements Extension
             m_log.fine(String.format(
                     "Declared annotation property %s on class %s.", name,
                     declaringClassName));
-            return new PropertyHandler(propertyType, name, decoder,
+            return new PropertyHandler(propertyType, name, metadata, decoder,
                     new MethodInjector(javaMethod));
         }
 

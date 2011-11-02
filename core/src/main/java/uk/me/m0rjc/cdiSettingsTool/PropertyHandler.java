@@ -18,6 +18,8 @@ class PropertyHandler<I, T>
     private final PropertyDecoder<? extends T> m_decoder;
     /** Strategy to inject the property. */
     private final Injector<I, T> m_injector;
+    /** Metadata for the property. */
+    private final ConfigProperty m_metadata;
 
     /**
      * Constructor.
@@ -28,6 +30,7 @@ class PropertyHandler<I, T>
      */
     public PropertyHandler(final Class<T> propertyClass,
                     final String propertyName,
+                    final ConfigProperty metadata,
                     final PropertyDecoder<? extends T> decoder,
                     final Injector<I, T> injector)
     {
@@ -35,6 +38,7 @@ class PropertyHandler<I, T>
         m_propertyType = propertyClass;
         m_decoder = decoder;
         m_injector = injector;
+        m_metadata = metadata;
     }
 
     /**
@@ -46,11 +50,29 @@ class PropertyHandler<I, T>
      */
     public void marshall(final ConfigurationProvider provider, final String configClassName, final I instance) throws ConfigurationException
     {
-        ConfigurationValue valueAccess = provider.getValue(configClassName, m_propertyName, m_propertyType);
+    	String requestClassName = firstNonNull(m_metadata.className(), configClassName);
+    	String requestProperty = firstNonNull(m_metadata.property(), m_propertyName);
+    	
+        ConfigurationValue valueAccess = provider.getValue(requestClassName, requestProperty, m_propertyType);
         if(valueAccess != null)
         {
             T value = m_decoder.decode(valueAccess);
             m_injector.inject(instance, value);
         }
+    }
+    
+    /**
+     * If a is provided then return a, otherwise return b.
+     * @param a the possible override value
+     * @param b the default value
+     * @return a if a not empty, otherwise b
+     */
+    private String firstNonNull(String a, String b)
+    {
+    	if(a != null && !a.isEmpty())
+    	{
+    		return a;
+    	}
+    	return b;
     }
 }

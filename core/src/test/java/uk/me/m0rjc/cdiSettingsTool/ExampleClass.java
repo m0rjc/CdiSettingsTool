@@ -44,6 +44,9 @@ public class ExampleClass
     @ConfigProperty
     private Date m_dateSetting;
     
+    @ConfigProperty(className="uk.me.m0rjc.SomewhereElse", property="theProperty")
+    private int m_somewhereElseProperty;
+    
     /**
      * Setter method for the String property. 
      * @param value value to set.
@@ -103,4 +106,9 @@ public class ExampleClass
     {
         return m_dateSetting;
     }
+
+	public int getSomewhereElseProperty()
+	{
+		return m_somewhereElseProperty;
+	}
 }
