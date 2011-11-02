@@ -27,6 +27,7 @@ class PropertyHandler<I, T>
      * @param propertyName name of the property to pass to the configuration provider.
      * @param decoder strategy to decode the property.
      * @param injector strategy to inject the property.
+     * @param metadata Annotation from the property.
      */
     public PropertyHandler(final Class<T> propertyClass,
                     final String propertyName,
@@ -50,9 +51,9 @@ class PropertyHandler<I, T>
      */
     public void marshall(final ConfigurationProvider provider, final String configClassName, final I instance) throws ConfigurationException
     {
-    	String requestClassName = firstNonNull(m_metadata.className(), configClassName);
-    	String requestProperty = firstNonNull(m_metadata.property(), m_propertyName);
-    	
+        String requestClassName = firstNonNull(m_metadata.className(), configClassName);
+        String requestProperty = firstNonNull(m_metadata.property(), m_propertyName);
+
         ConfigurationValue valueAccess = provider.getValue(requestClassName, requestProperty, m_propertyType);
         if(valueAccess != null)
         {
@@ -67,12 +68,12 @@ class PropertyHandler<I, T>
      * @param b the default value
      * @return a if a not empty, otherwise b
      */
-    private String firstNonNull(String a, String b)
+    private String firstNonNull(final String a, final String b)
     {
-    	if(a != null && !a.isEmpty())
-    	{
-    		return a;
-    	}
-    	return b;
+        if(a != null && !a.isEmpty())
+        {
+            return a;
+        }
+        return b;
     }
 }

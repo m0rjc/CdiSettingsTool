@@ -133,7 +133,7 @@ public class SettingsExtension implements Extension
 
         for (AnnotatedMethod<? super I> method : annotatedType.getMethods())
         {
-        	ConfigProperty metadata = method.getAnnotation(ConfigProperty.class);
+            ConfigProperty metadata = method.getAnnotation(ConfigProperty.class);
             if (metadata != null)
             {
                 PropertyHandler<I, ?> handler = constructMethodHandler(method, metadata);
@@ -146,8 +146,8 @@ public class SettingsExtension implements Extension
 
         for (AnnotatedField<? super I> field : annotatedType.getFields())
         {
-        	ConfigProperty metadata = field.getAnnotation(ConfigProperty.class);
-        	if (metadata != null)
+            ConfigProperty metadata = field.getAnnotation(ConfigProperty.class);
+            if (metadata != null)
             {
                 PropertyHandler<I, ?> handler = constructFieldHandler(field, metadata);
                 if (handler != null)
@@ -166,12 +166,12 @@ public class SettingsExtension implements Extension
      * @param field
      *            field to inject into.
      * @param metadata
-     * 			  ConfigurationProperty metadata for the field.
+     *            ConfigurationProperty metadata for the field.
      * @return the handler of null if not possible.
      * @param <I>
      *            instance type.
      */
-    private <I> PropertyHandler<I, ?> constructFieldHandler(final AnnotatedField<? super I> field, ConfigProperty metadata)
+    private <I> PropertyHandler<I, ?> constructFieldHandler(final AnnotatedField<? super I> field, final ConfigProperty metadata)
     {
         Class<? super I> declaringClass = field.getDeclaringType()
                 .getJavaClass();
@@ -204,12 +204,12 @@ public class SettingsExtension implements Extension
      * @param field
      *            field to inject into.
      * @param metadata
-     * 			  ConfigurationProperty metadata for the field.
+     *            ConfigurationProperty metadata for the field.
      * @return the handler of null if not possible.
      * @param <I>
      *            instance type.
      */
-    private <I> PropertyHandler<I, ?> constructMethodHandler(final AnnotatedMethod<? super I> field, ConfigProperty metadata)
+    private <I> PropertyHandler<I, ?> constructMethodHandler(final AnnotatedMethod<? super I> field, final ConfigProperty metadata)
     {
         Class<? super I> declaringClass = field.getDeclaringType()
                 .getJavaClass();
