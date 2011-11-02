@@ -8,7 +8,7 @@
 	<groupId>uk.me.m0rjc</groupId>
 	<artifactId>cdi-settings-tool</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.2</version>
 	<organization>
 		<name>This is a personal project, currently not associated with any organisation.</name>
 	</organization>
