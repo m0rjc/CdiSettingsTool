@@ -23,7 +23,6 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.Extension;
 import javax.enterprise.inject.spi.InjectionTarget;
 import javax.enterprise.inject.spi.ProcessInjectionTarget;
-import javax.resource.spi.ResourceAdapter;
 
 /**
  * Extension to apply runtime settings to beans in CDI.
@@ -122,11 +121,6 @@ public class SettingsExtension implements Extension
             final AnnotatedType<I> annotatedType)
     {
         Class<?> beanClass = annotatedType.getJavaClass();
-        if (ResourceAdapter.class.isAssignableFrom(beanClass))
-        {
-            // Avoid ResourceAdapters. They have their own configuration.
-            return null;
-        }
 
         // Find property names.
         List<PropertyHandler<I, ?>> handlers = new ArrayList<PropertyHandler<I, ?>>();
