@@ -1,9 +1,14 @@
 package uk.me.m0rjc.cdiSettingsTool.configurationProviders;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import uk.me.m0rjc.cdiSettingsTool.ConfigurationException;
 import uk.me.m0rjc.cdiSettingsTool.ConfigurationValue;
@@ -114,5 +119,48 @@ public abstract class AbstractConfigurationValue implements ConfigurationValue
         {
             throw new ConfigurationException("Cannot parse date " + string + ".", p);                
         }
+    }
+    
+    @Override
+    public URL getURLValue() throws ConfigurationException {
+    	 String string = getStringValue();
+         if (string == null || string.length() == 0)
+         {
+             return null;
+         }
+
+         try
+         {
+             return new URL(string);
+         }
+         catch(MalformedURLException x)
+         {
+             throw new ConfigurationException("Cannot parse URL " + string + ".", x);                
+         }
+     }
+    
+    @Override
+    public Collection<String> getCollectionValue() throws ConfigurationException {
+    	 String string = getStringValue();
+         if (string == null || string.length() == 0)
+         {
+             return null;
+         }
+
+         try
+         {
+        	 List<String> l = new LinkedList<String>();
+        	 
+        	 for (String s : string.split(" "))
+        	 {
+        		 l.add(s);
+        	 }
+        	 
+             return l;
+         }
+         catch(Exception x)
+         {
+             throw new ConfigurationException("Cannot parse URL " + string + ".", x);                
+         }
     }
 }

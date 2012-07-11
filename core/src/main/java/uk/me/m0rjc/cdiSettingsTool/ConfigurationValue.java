@@ -1,5 +1,7 @@
 package uk.me.m0rjc.cdiSettingsTool;
 
+import java.net.URL;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -39,4 +41,16 @@ public interface ConfigurationValue
      * @throws ConfigurationException on error or the value is not Date.
      */    
     Date getDateValue() throws ConfigurationException;
+    
+    /**
+     * @return the value as a URL if applicable
+     * @throws ConfigurationException on error or the value is not URL.
+     */
+    URL getURLValue() throws ConfigurationException;
+    
+    /**
+     * @return the value as a Collection if applicable
+     * @throws ConfigurationException on error or the value is not Collection.
+     */
+    Collection<String> getCollectionValue() throws ConfigurationException;
 }
