@@ -1,9 +1,9 @@
 package uk.me.m0rjc.cdiSettingsTool;
 
-import java.text.DateFormat;
-import java.util.Calendar;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 import junit.framework.Assert;
@@ -164,6 +164,25 @@ public class TestAbstractConfigurationValue
         Assert.assertNull(value.getDateValue());        
     }
     
+    @Test
+    public void testGetURL() throws ConfigurationException, MalformedURLException
+    {
+    	for (String value : new String[]{"https://github.com/Pennine-View-Harrogate/CdiSettingsTool/tree/master/core", null})
+        {
+            ConfigurationValue test = new ConcreteConfigurationValue(value);
+            Assert.assertEquals(value == null || value.equals("") ? null : new URL(value), test.getURLValue());
+        }
+    }
+    
+    @Test
+    public void testGetCollection() throws ConfigurationException, MalformedURLException
+    {
+    	for (String value : new String[]{"a b c", "d e f ", null, ""})
+        {
+            ConfigurationValue test = new ConcreteConfigurationValue(value);
+            Assert.assertEquals(value == null || value.equals("") ? null : Arrays.asList(value.split(" ")), test.getCollectionValue());
+        }
+    }
  
     /** Test class to inject strings into {@link AbstractConfigurationValue}. */
     private static class ConcreteConfigurationValue extends AbstractConfigurationValue
@@ -183,4 +202,5 @@ public class TestAbstractConfigurationValue
             return m_stringValue;
         }
     }
+    
 }
