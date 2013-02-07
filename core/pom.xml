@@ -53,12 +53,6 @@
 			<version>1.0-SP4</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.jboss.slf4j</groupId>
-			<artifactId>slf4j-jboss-logging</artifactId>
-			<version>1.0.3.GA</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 	<url>http://github.com/m0rjc/CdiSettingsTool</url>
 	<description>Provide injection points for configuration in Java Enterprise Beans managed by CDI.</description>
